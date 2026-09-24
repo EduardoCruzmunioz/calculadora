@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="screen-bezel">
+            <div class="screen">
+                <div class="screen-history"></div>
+                <div class="screen-result">0</div>
+            </div>
+        </div>
+
+        <div class="keypad">
+            <button type="button" id="btn-delete" value="del" class="btn btn-small btn-dark">
+                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                    <line x1="18" y1="9" x2="12" y2="15"></line>
+                    <line x1="12" y1="9" x2="18" y2="15"></line>
+                </svg>
+            </button>
+            <button type="button" id="btn-clear" value="ac" class="btn btn-small btn-dark">AC</button>
+            <button type="button" id="btn-percent" value="%" class="btn btn-small btn-dark">%</button>
+            <button type="button" id="btn-divide" value="÷" class="btn btn-blue">÷</button>
+
+            <button type="button" id="btn-7" value="7" class="btn btn-gray">7</button>
+            <button type="button" id="btn-8" value="8" class="btn btn-gray">8</button>
+            <button type="button" id="btn-9" value="9" class="btn btn-gray">9</button>
+            <button type="button" id="btn-multiply" value="*" class="btn btn-blue">×</button>
+
+            <button type="button" id="btn-4" value="4" class="btn btn-gray">4</button>
+            <button type="button" id="btn-5" value="5" class="btn btn-gray">5</button>
+            <button type="button" id="btn-6" value="6" class="btn btn-gray">6</button>
+            <button type="button" id="btn-subtract" value="-" class="btn btn-blue">−</button>
+
+            <button type="button" id="btn-1" value="1" class="btn btn-gray">1</button>
+            <button type="button" id="btn-2" value="2" class="btn btn-gray">2</button>
+            <button type="button" id="btn-3" value="3" class="btn btn-gray">3</button>
+            <button type="button" id="btn-add" value="+" class="btn btn-blue">+</button>
+
+            <button type="button" id="btn-sign" value="sign" class="btn btn-small btn-dark">±</button>
+            <button type="button" id="btn-0" value="0" class="btn btn-gray">0</button>
+            <button type="button" id="btn-decimal" value="." class="btn btn-gray">,</button>
+            <button type="button" id="btn-equals" value="equals" class="btn btn-orange">=</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
