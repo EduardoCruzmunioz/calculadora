@@ -96,10 +96,29 @@ const manejarDecimal = () => {
 };
 
 const manejarSigno = () => {
+  if (resultadoMostrado && primerNumero !== null) {
+    primerNumero = -primerNumero;
+    actualizarPantalla(String(primerNumero));
+    ultimoValor = "sign";
+    return;
+  }
   if (acumulador === "") return;
   acumulador = String(-Number(acumulador));
   actualizarPantalla(acumulador);
   ultimoValor = "sign";
+};
+
+const manejarPorcentaje = () => {
+  if (resultadoMostrado && primerNumero !== null) {
+    primerNumero = primerNumero / 100;
+    actualizarPantalla(String(primerNumero));
+    ultimoValor = "%";
+    return;
+  }
+  if (acumulador === "") return;
+  acumulador = String(Number(acumulador) / 100);
+  actualizarPantalla(acumulador);
+  ultimoValor = "%";
 };
 
 const manejarOperador = (valor) => {
@@ -184,6 +203,7 @@ const procesarEntrada = (valor) => {
   if (valor === "ac") return resetear();
   if (valor === "del") return; // Gestionado por eventos prolongados
   if (valor === "sign") return manejarSigno();
+  if (valor === "%") return manejarPorcentaje();
   if (valor === ".") return manejarDecimal();
   if (valor === "equals") return manejarIgual();
   if (["+", "-", "*", "÷"].includes(valor)) return manejarOperador(valor);
@@ -219,6 +239,7 @@ document.addEventListener("keydown", (e) => {
   else if (tecla === "Backspace") manejarBorrado();
   else if (tecla === "," || tecla === ".") document.getElementById("btn-decimal").click();
   else if (tecla === "Enter" || tecla === "=") { e.preventDefault(); document.getElementById("btn-equals").click(); }
+  else if (tecla === "%") document.getElementById("btn-percent").click();
   else if (tecla === "+") document.getElementById("btn-add").click();
   else if (tecla === "-") document.getElementById("btn-subtract").click();
   else if (tecla === "*") document.getElementById("btn-multiply").click();
