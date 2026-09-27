@@ -25,26 +25,26 @@ const ajustarTamañoFuente = () => {
   }
 };
 
+const formatearNumero = (texto) => {
+  if (texto === "Error" || texto === "0" || texto === "") return texto === "" ? "0" : texto;
+  
+  const partes = texto.split(".");
+  let entero = partes[0];
+  const esNegativo = entero.startsWith("-");
+  
+  if (esNegativo) entero = entero.slice(1);
+  
+  const enteroFormateado = entero.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  const finalEntero = (esNegativo ? "-" : "") + enteroFormateado;
+  
+  if (partes.length > 1) return finalEntero + "," + partes[1];
+  if (texto.includes(".")) return finalEntero + ",";
+  
+  return finalEntero;
+};
+
 const actualizarPantalla = (texto) => {
-  if (texto === "Error" || texto === "0" || texto === "") {
-    pantallaResultado.textContent = texto === "" ? "0" : texto;
-  } else {
-    const partes = texto.split(".");
-    let entero = partes[0];
-    const esNegativo = entero.startsWith("-");
-    if (esNegativo) entero = entero.slice(1);
-    
-    const enteroFormateado = entero.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    const finalEntero = (esNegativo ? "-" : "") + enteroFormateado;
-    
-    if (partes.length > 1) {
-      pantallaResultado.textContent = finalEntero + "," + partes[1];
-    } else if (texto.includes(".")) {
-      pantallaResultado.textContent = finalEntero + ",";
-    } else {
-      pantallaResultado.textContent = finalEntero;
-    }
-  }
+  pantallaResultado.textContent = formatearNumero(texto);
   ajustarTamañoFuente();
 };
 
