@@ -69,6 +69,9 @@ const calcular = (a, b, op) => {
     case "÷": 
       if (b === 0) return "Error";
       res = a / b; break;
+    case "%":
+      if (b === 0) return "Error";
+      res = a % b; break;
     default: res = b; break;
   }
   return Math.round(res * 100) / 100; // Limitar a 2 decimales el cálculo
@@ -108,21 +111,8 @@ const manejarSigno = () => {
   ultimoValor = "sign";
 };
 
-const manejarPorcentaje = () => {
-  if (resultadoMostrado && primerNumero !== null) {
-    primerNumero = primerNumero / 100;
-    actualizarPantalla(String(primerNumero));
-    ultimoValor = "%";
-    return;
-  }
-  if (acumulador === "") return;
-  acumulador = String(Number(acumulador) / 100);
-  actualizarPantalla(acumulador);
-  ultimoValor = "%";
-};
-
 const manejarOperador = (valor) => {
-  const esOperador = ["+", "-", "*", "÷"].includes(ultimoValor);
+  const esOperador = ["+", "-", "*", "÷", "%"].includes(ultimoValor);
   
   if (esOperador) {
     historial = historial.slice(0, -2) + ` ${valor} `;
@@ -203,10 +193,9 @@ const procesarEntrada = (valor) => {
   if (valor === "ac") return resetear();
   if (valor === "del") return; // Gestionado por eventos prolongados
   if (valor === "sign") return manejarSigno();
-  if (valor === "%") return manejarPorcentaje();
   if (valor === ".") return manejarDecimal();
   if (valor === "equals") return manejarIgual();
-  if (["+", "-", "*", "÷"].includes(valor)) return manejarOperador(valor);
+  if (["+", "-", "*", "÷", "%"].includes(valor)) return manejarOperador(valor);
   if (!isNaN(valor)) return manejarNumero(valor);
 };
 
