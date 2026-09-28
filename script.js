@@ -105,7 +105,21 @@ const manejarSigno = () => {
     ultimoValor = "sign";
     return;
   }
-  if (acumulador === "") return;
+  
+  if (acumulador === "") {
+    acumulador = "-";
+    actualizarPantalla("-0");
+    ultimoValor = "sign";
+    return;
+  }
+
+  if (acumulador === "-") {
+    acumulador = "";
+    actualizarPantalla("0");
+    ultimoValor = "sign";
+    return;
+  }
+
   acumulador = String(-Number(acumulador));
   actualizarPantalla(acumulador);
   ultimoValor = "sign";
